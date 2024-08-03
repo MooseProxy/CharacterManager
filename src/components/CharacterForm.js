@@ -115,28 +115,7 @@ const CharacterForm = () => {
     }
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const json = JSON.parse(event.target.result);
-        setFormData({
-          ...formData,
-          ...json,
-          skills: json.skills || [],
-          gear: json.gear || [],
-          cyberware: json.cyberware || [],
-          bioware: json.bioware || [],
-          ranged_weapons: json.ranged_weapons || [],
-          melee_weapons: json.melee_weapons || []
-        });
-      } catch (error) {
-        console.error('Error parsing JSON:', error);
-      }
-    };
-    reader.readAsText(file);
-  };
+
 
   const resetForm = () => {
     setFormData({
@@ -254,11 +233,7 @@ const CharacterForm = () => {
             <button type="button" onClick={() => addNewItem('bioware')}>Add Bioware</button>
             <button type="submit">{selectedCharacter ? 'Update Character' : 'Add Character'}</button>
           </div>
-          <div className="form-group">
-            <label>Upload Character</label>
-            <input type="file" accept=".json" onChange={handleFileUpload} />
-            <a href="/character_template.json" download="character_template.json" className="download-link">Download Character Template</a>
-          </div>
+        
         </form>
       )}
       {selectedCharacter && (
