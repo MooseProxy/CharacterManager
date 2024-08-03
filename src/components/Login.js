@@ -21,6 +21,7 @@ const Login = () => {
 
   return (
     <div className="auth-container">
+      <h1>Shadowrun Character Manager</h1>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input

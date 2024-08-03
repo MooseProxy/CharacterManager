@@ -22,6 +22,7 @@ const Register = () => {
 
   return (
     <div className="auth-container">
+      <h1>Shadowrun Character Manager</h1>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
