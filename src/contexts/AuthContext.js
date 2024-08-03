@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await axios.post('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com/routes//auth/login', { username, password });
+      const response = await axios.post('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com/routes/auth/login', { username, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      const userResponse = await axios.get('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com/routes//auth/me');
+      const userResponse = await axios.get('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com/routes/auth/me');
       setUser(userResponse.data);
     } catch (error) {
       console.error('Failed to login:', error);
