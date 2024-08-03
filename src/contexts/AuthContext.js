@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('http://https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/me')
+      axios.get('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/me')
         .then((response) => {
           setUser(response.data);
         })
@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await axios.post('http://https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/login', { username, password });
+      const response = await axios.post('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/login', { username, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      const userResponse = await axios.get('http://https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/me');
+      const userResponse = await axios.get('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/me');
       setUser(userResponse.data);
     } catch (error) {
       console.error('Failed to login:', error);
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (username, password, discordId) => {
-    await axios.post('http://https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/register', { username, password, discordId });
+    await axios.post('https://character-manager-app-backend-8b80d2ec8475.herokuapp.com//auth/register', { username, password, discordId });
   };
 
   const logout = () => {
